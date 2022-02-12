@@ -26,8 +26,10 @@
                         </table>
 
                         <div class="d-flex justify-content-end">
-                            <form action="" method="get"></form>
-                            <button type="button" class="btn btn-warning">Rent</button>
+                            <form action="{{ route('rent_ebook', $ebook) }}" method="post">
+                                @csrf
+                                <button class="btn btn-warning">Rent</button>
+                            </form>
                         </div>
                     </div>
                 </div>

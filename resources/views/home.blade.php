@@ -20,7 +20,7 @@
                                     <tr>
                                         <td>{{ $ebook->author }}</td>
                                         <th scope="row">
-                                            <a href="{{ route('show_book', $ebook) }}">{{ $ebook->title }}</a>
+                                            <a href="{{ route('show_ebook', $ebook) }}">{{ $ebook->title }}</a>
                                         </th>
                                     </tr>
                                 @endforeach

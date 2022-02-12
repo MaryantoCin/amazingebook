@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Ebook;
 use App\Models\Gender;
+use App\Models\Order;
 use App\Models\Role;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -71,11 +73,46 @@ class HomeController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
+        return view('saved');
+    }
+
+    public function show_ebook(Ebook $ebook)
+    {
+        return view('ebook_detail', ['ebook' => $ebook]);
+    }
+
+    public function rent_ebook(Ebook $ebook)
+    {
+        $user = Auth::user();
+
+        Order::create([
+            'account_id' => $user->id,
+            'ebook_id' => $ebook->id,
+            'order_date' => Carbon::now()->toDateString(),
+        ]);
+
+        return Redirect::route('show_cart');
+    }
+
+    public function show_cart()
+    {
+        $user = Auth::user();
+
+        $items = Order::where('account_id', $user->id)->get();
+        return view('cart', ['items' => $items]);
+    }
+
+    public function delete_cart(Order $order)
+    {
+        Order::destroy($order->id);
         return Redirect::back();
     }
 
-    public function show_book(Ebook $ebook)
+    public function checkout_cart()
     {
-        return view('ebook_detail', ['ebook' => $ebook]);
+        $user = Auth::user();
+
+        Order::where('account_id', $user->id)->delete();
+        return view('success');
     }
 }
