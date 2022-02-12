@@ -23,3 +23,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'show_profile'])->name('show_profile');
 Route::patch('/profile', [App\Http\Controllers\HomeController::class, 'update_profile'])->name('update_profile');
+Route::get('/ebook/{ebook}', [App\Http\Controllers\HomeController::class, 'show_book'])->name('show_book');

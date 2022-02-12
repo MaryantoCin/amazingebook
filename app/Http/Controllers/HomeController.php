@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ebook;
 use App\Models\Gender;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -28,7 +29,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $ebooks = Ebook::all();
+        return view('home', ['ebooks' => $ebooks]);
     }
 
     public function show_profile()
@@ -70,5 +72,10 @@ class HomeController extends Controller
         ]);
 
         return Redirect::back();
+    }
+
+    public function show_book(Ebook $ebook)
+    {
+        return view('ebook_detail', ['ebook' => $ebook]);
     }
 }
