@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
 use App\Models\Ebook;
 use App\Models\Gender;
 use App\Models\Order;
@@ -114,5 +115,37 @@ class HomeController extends Controller
 
         Order::where('account_id', $user->id)->delete();
         return view('success');
+    }
+
+    public function show_account()
+    {
+        $accounts = Account::all();
+
+        return view('maintenance', ['accounts' => $accounts]);
+    }
+
+    public function show_update_role(Account $account)
+    {
+        $roles = Role::all();
+        return view('update_role', ['account' => $account, 'roles' => $roles]);
+    }
+
+    public function update_role(Request $request, Account $account)
+    {
+        $request->validate([
+            'role_id' => ['required', 'exists:roles,id'],
+        ]);
+
+        $account->update([
+            'role_id' => $request->role_id,
+        ]);
+
+        return Redirect::route('show_account');
+    }
+
+    public function delete_account(Account $account)
+    {
+        Account::destroy($account->id);
+        return Redirect::back();
     }
 }

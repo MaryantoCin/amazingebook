@@ -27,4 +27,8 @@ Route::get('/ebook/{ebook}', [App\Http\Controllers\HomeController::class, 'show_
 ROute::post('/ebook/{ebook}', [App\Http\Controllers\HomeController::class, 'rent_ebook'])->name('rent_ebook');
 Route::get('/cart', [App\Http\Controllers\HomeController::class, 'show_cart'])->name('show_cart');
 Route::delete('/order/{order}', [App\Http\Controllers\HomeController::class, 'delete_cart'])->name('delete_cart');
-ROute::post('/checkout', [App\Http\Controllers\HomeController::class, 'checkout_cart'])->name('checkout_cart');
+Route::post('/checkout', [App\Http\Controllers\HomeController::class, 'checkout_cart'])->name('checkout_cart');
+Route::get('/account', [App\Http\Controllers\HomeController::class, 'show_account'])->name('show_account');
+Route::get('/account/{account}', [App\Http\Controllers\HomeController::class, 'show_update_role'])->name('show_update_role');
+Route::patch('/account/{account}', [App\Http\Controllers\HomeController::class, 'update_role'])->name('update_role');
+Route::delete('/account/{account}', [App\Http\Controllers\HomeController::class, 'delete_account'])->name('delete_account');
