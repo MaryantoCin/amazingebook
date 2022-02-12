@@ -79,7 +79,7 @@
                                             name="gender_id" value="{{ $gender->id }}"
                                             {{ $user->gender_id == $gender->id ? 'checked' : '' }}>
                                         <label class="form-check-label"
-                                            for="gender_{{ $gender->id }}">{{ $gender->desc }}</label>
+                                            for="gender_{{ $gender->id }}">{{ __($gender->desc) }}</label>
                                     @endforeach
 
                                     @error('gender_id')
@@ -115,7 +115,8 @@
                                         id="role_id">
                                         @foreach ($roles as $role)
                                             <option value="{{ $role->id }}"
-                                                {{ $user->role_id == $role->id ? 'selected' : '' }}>{{ $role->desc }}
+                                                {{ $user->role_id == $role->id ? 'selected' : '' }}>
+                                                {{ __($role->desc) }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -165,7 +166,7 @@
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
+                                        {{ __('Save') }}
                                     </button>
                                 </div>
                             </div>

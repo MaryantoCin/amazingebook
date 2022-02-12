@@ -72,7 +72,7 @@
                                             class="form-check-input @error('gender_id') is-invalid @enderror"
                                             name="gender_id" value="{{ $gender->id }}">
                                         <label class="form-check-label"
-                                            for="gender_{{ $gender->id }}">{{ $gender->desc }}</label>
+                                            for="gender_{{ $gender->id }}">{{ __($gender->desc) }}</label>
                                     @endforeach
 
                                     @error('gender_id')
@@ -107,7 +107,7 @@
                                     <select class="form-control @error('role_id') is-invalid @enderror" name="role_id"
                                         id="role_id">
                                         @foreach ($roles as $role)
-                                            <option value="{{ $role->id }}">{{ $role->desc }}</option>
+                                            <option value="{{ $role->id }}">{{ __($role->desc) }}</option>
                                         @endforeach
                                     </select>
 

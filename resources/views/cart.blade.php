@@ -11,7 +11,7 @@
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th scope="col">Title</th>
+                                    <th scope="col">{{ __('Title') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -22,7 +22,7 @@
                                             <form action="{{ route('delete_cart', $item) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger">Delete</button>
+                                                <button class="btn btn-danger">{{ __('Delete') }}</button>
                                             </form>
                                         </th>
                                     </tr>
@@ -33,7 +33,7 @@
                         <div class="d-flex justify-content-end">
                             <form action="{{ route('checkout_cart') }}" method="post">
                                 @csrf
-                                <button class="btn btn-warning">Submit</button>
+                                <button class="btn btn-warning">{{ __('Submit') }}</button>
                             </form>
                         </div>
                     </div>

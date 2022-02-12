@@ -11,8 +11,8 @@
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th scope="col">Author</th>
-                                    <th scope="col">Title</th>
+                                    <th scope="col">{{ __('Author') }}</th>
+                                    <th scope="col">{{ __('Title') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

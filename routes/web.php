@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-
+Route::get('locale/{locale?}', [App\Http\Controllers\HomeController::class, 'set_locale'])->name('set_locale');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');

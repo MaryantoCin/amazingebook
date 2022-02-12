@@ -11,8 +11,8 @@
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th scope="col">Author</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">{{ __('Account') }}</th>
+                                    <th scope="col">{{ __('Action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -21,11 +21,12 @@
                                         <td>{{ $account->first_name }} {{ $account->middle_name }}
                                             {{ $account->last_name }} - {{ $account->role->desc }}</td>
                                         <th scope="row">
-                                            <a href="{{ route('show_update_role', $account) }}">Update Role</a>
+                                            <a
+                                                href="{{ route('show_update_role', $account) }}">{{ __('Update Role') }}</a>
                                             <form action="{{ route('delete_account', $account) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger">Delete</button>
+                                                <button class="btn btn-danger">{{ __('Delete') }}</button>
                                             </form>
                                         </th>
                                     </tr>

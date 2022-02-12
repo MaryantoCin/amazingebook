@@ -11,15 +11,15 @@
                         <table class="table table-borderless">
                             <tbody>
                                 <tr>
-                                    <th>Title:</th>
+                                    <th>{{ __('Title') }}:</th>
                                     <td>{{ $ebook->title }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Author:</th>
+                                    <th>{{ __('Author') }}:</th>
                                     <td>{{ $ebook->author }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Description</th>
+                                    <th>{{ __('Description') }}</th>
                                     <td>{{ $ebook->description }}</td>
                                 </tr>
                             </tbody>
@@ -28,7 +28,7 @@
                         <div class="d-flex justify-content-end">
                             <form action="{{ route('rent_ebook', $ebook) }}" method="post">
                                 @csrf
-                                <button class="btn btn-warning">Rent</button>
+                                <button class="btn btn-warning">{{ __('Rent') }}</button>
                             </form>
                         </div>
                     </div>

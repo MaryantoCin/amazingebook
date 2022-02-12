@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
                     <div class="card-body">
-                        <p>Log Out Success!</p>
+                        <p>{{ __('Log Out Success!') }}</p>
                     </div>
                 </div>
             </div>

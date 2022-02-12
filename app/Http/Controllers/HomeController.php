@@ -12,9 +12,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
+    public function set_locale($locale = 'en')
+    {
+        if ($locale == 'en' || $locale == 'id') {
+            Session::put('locale', $locale);
+            return Redirect::back();
+        }
+    }
+
     public function index()
     {
         return view('welcome');

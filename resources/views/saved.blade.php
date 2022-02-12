@@ -8,8 +8,8 @@
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
                     <div class="card-body">
-                        <p>Saved!</p>
-                        <a href="{{ route('home') }}">Click here to "Home"</a>
+                        <p>{{ __('Saved!') }}!</p>
+                        <a href="{{ route('home') }}">{{ __('Click here to "Home"') }}</a>
                     </div>
                 </div>
             </div>
