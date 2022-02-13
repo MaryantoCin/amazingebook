@@ -22,6 +22,7 @@ class Account extends Authenticatable
         'modified_by',
         'role_id',
         'gender_id',
+        'delete_flag',
     ];
 
     protected $hidden = [

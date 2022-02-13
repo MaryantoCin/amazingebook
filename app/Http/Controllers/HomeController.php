@@ -118,7 +118,7 @@ class HomeController extends Controller
 
     public function show_account()
     {
-        $accounts = Account::all();
+        $accounts = Account::where('delete_flag', '=', false)->get();
 
         return view('maintenance', ['accounts' => $accounts]);
     }
@@ -144,7 +144,10 @@ class HomeController extends Controller
 
     public function delete_account(Account $account)
     {
-        Account::destroy($account->id);
+        $account->update([
+            'delete_flag' => true,
+        ]);
+
         return Redirect::back();
     }
 }
