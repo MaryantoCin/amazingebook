@@ -14,10 +14,10 @@
                                     <div class="donut-label">Log Out Success!</div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
