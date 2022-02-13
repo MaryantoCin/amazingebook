@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -26,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Amazing E-Book
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -37,16 +38,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li class="nav-item d-flex">
+                            <a class="nav-link" href="{{ route('set_locale', 'en') }}">
+                                <img class="country" src="{{ asset('image/us.svg') }}" alt="EN">
+                            </a>
+                            <a class="nav-link" href="{{ route('set_locale', 'id') }}">
+                                <img class="country" src="{{ asset('image/id.svg') }}" alt="ID">
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        <li class="nav-item d-flex">
-                            <a class="nav-link" href="{{ route('set_locale', 'en') }}">EN</a>
-                            <a class="nav-link" href="{{ route('set_locale', 'id') }}">ID</a>
-                        </li>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -60,34 +64,49 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                                             document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
+                                    @csrf
+                                </form>
                             </li>
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
-
+        @auth
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+                <div class="container d-flex justify-content-center">
+                    <div class="navbar-nav">
+                        <div class="nav-item d-flex justify-content-center">
+                            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+                            <a class="nav-link" href="{{ route('show_cart') }}">{{ __('Cart') }}</a>
+                            <a class="nav-link" href="{{ route('show_profile') }}">{{ __('Profile') }}</a>
+                            @if (Auth::user()->role->desc == 'Admin')
+                                <a class="nav-link"
+                                    href="{{ route('show_account') }}">{{ __('Account Maintenance') }}</a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        @endauth
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">&copy; Amazing E-book 2022</span>
+            </div>
+        </footer>
     </div>
 </body>
 

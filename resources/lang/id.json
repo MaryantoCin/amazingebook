@@ -22,14 +22,20 @@
     "Action": "Aksi",
     "Update Role": "Ganti Jabatan",
     "Save": "Simpan",
-    "Saved!": "Tersimpan!",
+    "Saved": "Tersimpan",
     "Submit": "Kirim",
     "Click here to \"Home\"": "Klik sini untuk ke halaman \"Home\"",
-    "Success!": "Sukses!",
+    "Success": "Sukses",
     "Find and rent your book here": "Cari dan sewa bukumu disini",
     "Dashboard": "Dasbor",
+    "Home": "Beranda",
+    "Cart": "Keranjang",
+    "Profile": "Profil",
+    "Account Maintenance":"Pemeliharaan Akun",
     "Male": "Laki-laki",
     "Female": "Perempuan",
     "User": "Pengguna",
-    "Admin": "Pengelola"
+    "Admin": "Pengelola",
+    "Already have an account? Click here to log in": "Sudah punya akun? Klik sini untuk masuk",
+    "Don't have an account? Click here to sign up": "Belum punya akun? Klik sini untuk daftar"
 }

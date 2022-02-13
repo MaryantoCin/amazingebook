@@ -50,6 +50,10 @@
                                         {{ __('Login') }}
                                     </button>
                                 </div>
+                                <div class="col-md-6 offset-md-4 mt-3">
+                                    <a href="{{ route('register') }}"
+                                        class="link-primary">{{ __('Don\'t have an account? Click here to sign up') }}</a>
+                                </div>
                             </div>
                         </form>
                     </div>

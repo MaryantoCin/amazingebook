@@ -169,6 +169,10 @@
                                         {{ __('Register') }}
                                     </button>
                                 </div>
+                                <div class="col-md-6 offset-md-4 mt-3">
+                                    <a href="{{ route('login') }}"
+                                        class="link-primary">{{ __('Already have an account? Click here to log in') }}</a>
+                                </div>
                             </div>
                         </form>
                     </div>

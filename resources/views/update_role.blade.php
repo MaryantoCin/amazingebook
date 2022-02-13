@@ -12,7 +12,7 @@
                         <form action="{{ route('update_role', $account) }}" method="post">
                             @csrf
                             @method('PATCH')
-                            <label for="role_id">{{ __('Role') }}: </label>
+                            <label class="pr-3" for="role_id">{{ __('Role') }}: </label>
                             <select name="role_id" id="role_id">
                                 @foreach ($roles as $role)
                                     <option value="{{ $role->id }}"
@@ -20,7 +20,8 @@
                                         {{ $role->desc }}</option>
                                 @endforeach
                             </select>
-                            <button class="btn btn-warning">{{ __('Save') }}</button>
+                            <br>
+                            <button class="btn btn-warning mt-3">{{ __('Save') }}</button>
                         </form>
                     </div>
                 </div>

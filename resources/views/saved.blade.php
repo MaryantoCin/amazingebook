@@ -8,11 +8,19 @@
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
                     <div class="card-body">
-                        <p>{{ __('Saved!') }}!</p>
-                        <a href="{{ route('home') }}">{{ __('Click here to "Home"') }}</a>
+                        <div class="card-body d-flex justify-content-center">
+                            <div class="donut-container">
+                                <div class="donut-inner d-flex justify-content-center align-items-center">
+                                    <div class="donut-label">
+                                        <p>{{ __('Saved') }}!</p>
+                                        <a href="{{ route('home') }}">{{ __('Click here to "Home"') }}</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection
