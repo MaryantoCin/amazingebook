@@ -9,6 +9,7 @@
                         {{ $account->last_name }}</div>
 
                     <div class="card-body">
+                        <p>Last modified by {{ $account->modified_by }} at {{ $account->modified_at }}</p>
                         <form action="{{ route('update_role', $account) }}" method="post">
                             @csrf
                             @method('PATCH')

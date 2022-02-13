@@ -131,12 +131,17 @@ class HomeController extends Controller
 
     public function update_role(Request $request, Account $account)
     {
+        $user = $request->user();
+        $name = $user->first_name . " " . ($user->middle_name ? $user->middle_name . " " : "") . "$user->last_name";
+
         $request->validate([
             'role_id' => ['required', 'exists:roles,id'],
         ]);
 
         $account->update([
             'role_id' => $request->role_id,
+            'modified_at' => Carbon::now()->toDateString(),
+            'modified_by' => $name
         ]);
 
         return Redirect::route('show_account');
