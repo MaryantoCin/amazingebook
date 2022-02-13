@@ -37,7 +37,7 @@ class RegisterController extends Controller
             'gender_id' => ['required', 'exists:genders,id'],
             'email' => ['required', 'string', 'email', 'max:50', 'unique:accounts'],
             'role_id' => ['required', 'exists:roles,id'],
-            'password' => ['required', 'string', 'alpha_num', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'alpha_num', 'min:8'],
             'display_picture' => ['required', 'image'],
         ]);
     }
