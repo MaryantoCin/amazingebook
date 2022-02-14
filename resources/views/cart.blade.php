@@ -31,7 +31,10 @@
                         <div class="d-flex justify-content-end">
                             <form action="{{ route('checkout_cart') }}" method="post">
                                 @csrf
-                                <button class="btn btn-warning">{{ __('Submit') }}</button>
+                                <button class="btn btn-warning" @if ($items->isEmpty())
+                                    disabled
+                                    @endif
+                                    >{{ __('Submit') }}</button>
                             </form>
                         </div>
                     </div>

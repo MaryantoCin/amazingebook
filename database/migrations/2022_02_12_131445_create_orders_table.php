@@ -9,7 +9,7 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
+            $table->id('order_id');
             $table->foreignId('account_id');
             $table->foreignId('ebook_id');
             $table->date('order_date');

@@ -9,5 +9,6 @@ class Gender extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'gender_id';
     protected $guarded = [];
 }

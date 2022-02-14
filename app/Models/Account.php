@@ -11,6 +11,8 @@ class Account extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'account_id';
+
     protected $fillable = [
         'first_name',
         'middle_name',
@@ -31,11 +33,11 @@ class Account extends Authenticatable
 
     public function gender()
     {
-        return $this->belongsTo(Gender::class);
+        return $this->belongsTo(Gender::class, 'gender_id', 'gender_id');
     }
 
     public function role()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class, 'role_id', 'role_id');
     }
 }

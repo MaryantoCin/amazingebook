@@ -10,8 +10,8 @@ class GenderSeeder extends Seeder
     public function run()
     {
         $data = [
-            ['id' => 1, 'desc' => 'Male'],
-            ['id' => 2, 'desc' => 'Female'],
+            ['gender_id' => 1, 'gender_desc' => 'Male'],
+            ['gender_id' => 2, 'gender_descdesc' => 'Female'],
         ];
 
         DB::table('genders')->insert($data);

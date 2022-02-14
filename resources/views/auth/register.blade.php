@@ -68,11 +68,11 @@
 
                                 <div class="col-md-6">
                                     @foreach ($genders as $gender)
-                                        <input id="gender_{{ $gender->id }}" type="radio"
+                                        <input id="gender_{{ $gender->gender_id }}" type="radio"
                                             class="form-check-input @error('gender_id') is-invalid @enderror"
-                                            name="gender_id" value="{{ $gender->id }}">
+                                            name="gender_id" value="{{ $gender->gender_id }}">
                                         <label class="form-check-label"
-                                            for="gender_{{ $gender->id }}">{{ __($gender->desc) }}</label>
+                                            for="gender_{{ $gender->gender_id }}">{{ __($gender->gender_desc) }}</label>
                                     @endforeach
 
                                     @error('gender_id')
@@ -107,7 +107,7 @@
                                     <select class="form-control @error('role_id') is-invalid @enderror" name="role_id"
                                         id="role_id">
                                         @foreach ($roles as $role)
-                                            <option value="{{ $role->id }}">{{ __($role->desc) }}</option>
+                                            <option value="{{ $role->role_id }}">{{ __($role->role_desc) }}</option>
                                         @endforeach
                                     </select>
 

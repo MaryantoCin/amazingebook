@@ -9,7 +9,7 @@ class CreateEbooksTable extends Migration
     public function up()
     {
         Schema::create('ebooks', function (Blueprint $table) {
-            $table->id();
+            $table->id('ebook_id');
             $table->string('title');
             $table->string('author');
             $table->longText('description');

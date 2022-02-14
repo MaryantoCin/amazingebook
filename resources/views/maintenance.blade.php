@@ -19,7 +19,7 @@
                                     <tr>
                                         <td class="text-center"> {{ $account->first_name }}
                                             {{ $account->middle_name }}
-                                            {{ $account->last_name }} - {{ $account->role->desc }}</td>
+                                            {{ $account->last_name }} - {{ $account->role->role_desc }}</td>
                                         <td class="d-flex justify-content-center">
                                             <a class="btn btn-link"
                                                 href="{{ route('show_update_role', $account) }}">{{ __('Update Role') }}</a>

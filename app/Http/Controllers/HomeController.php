@@ -47,13 +47,14 @@ class HomeController extends Controller
     {
         $user = $request->user();
 
+
         $request->validate([
             'first_name' => ['required', 'string', 'alpha_num', 'max:25'],
             'middle_name' => ['nullable', 'string', 'alpha_num', 'max:25'],
             'last_name' => ['required', 'string', 'alpha_num', 'max:25'],
-            'gender_id' => ['required', 'exists:genders,id'],
-            'email' => ['required', 'string', 'email', 'max:50', 'unique:accounts,email,' . $user->id],
-            'role_id' => ['required', 'exists:roles,id'],
+            'gender_id' => ['required', 'exists:genders,gender_id'],
+            'email' => ['required', 'string', 'email', 'max:50', 'unique:accounts,email,' . $user->account_id . ',account_id'],
+            'role_id' => ['required', 'exists:roles,role_id'],
             'password' => ['required', 'string', 'alpha_num', 'min:8'],
             'display_picture' => ['required', 'image'],
         ]);
@@ -86,8 +87,8 @@ class HomeController extends Controller
         $user = Auth::user();
 
         Order::create([
-            'account_id' => $user->id,
-            'ebook_id' => $ebook->id,
+            'account_id' => $user->account_id,
+            'ebook_id' => $ebook->ebook_id,
             'order_date' => Carbon::now()->toDateString(),
         ]);
 
@@ -98,13 +99,13 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        $items = Order::where('account_id', $user->id)->get();
+        $items = Order::where('account_id', $user->account_id)->get();
         return view('cart', ['items' => $items]);
     }
 
     public function delete_cart(Order $order)
     {
-        Order::destroy($order->id);
+        Order::destroy($order->order_id);
         return Redirect::back();
     }
 
@@ -112,7 +113,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        Order::where('account_id', $user->id)->delete();
+        Order::where('account_id', $user->account_id)->delete();
         return view('success');
     }
 
@@ -135,7 +136,7 @@ class HomeController extends Controller
         $name = $user->first_name . " " . ($user->middle_name ? $user->middle_name . " " : "") . "$user->last_name";
 
         $request->validate([
-            'role_id' => ['required', 'exists:roles,id'],
+            'role_id' => ['required', 'exists:roles,role_id'],
         ]);
 
         $account->update([

@@ -9,7 +9,7 @@ class CreateAccountsTable extends Migration
     public function up()
     {
         Schema::create('accounts', function (Blueprint $table) {
-            $table->id();
+            $table->id('account_id');
             $table->foreignId('role_id');
             $table->foreignId('gender_id');
             $table->string('first_name', 25);
