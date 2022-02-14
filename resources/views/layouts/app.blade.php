@@ -40,19 +40,21 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link {{ Route::currentRouteNamed('login') ? 'active' : '' }}"
+                                        href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link {{ Route::currentRouteNamed('register') ? 'active' : '' }}"
+                                        href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
+                                                        document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -70,11 +72,14 @@
                 <div class="container d-flex justify-content-center">
                     <div class="navbar-nav">
                         <div class="nav-item d-flex justify-content-center">
-                            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
-                            <a class="nav-link" href="{{ route('show_cart') }}">{{ __('Cart') }}</a>
-                            <a class="nav-link" href="{{ route('show_profile') }}">{{ __('Profile') }}</a>
+                            <a class="nav-link {{ Route::currentRouteNamed('home') ? 'active' : '' }}"
+                                href="{{ route('home') }}">{{ __('Home') }}</a>
+                            <a class="nav-link {{ Route::currentRouteNamed('show_cart') ? 'active' : '' }}"
+                                href="{{ route('show_cart') }}">{{ __('Cart') }}</a>
+                            <a class="nav-link {{ Route::currentRouteNamed('show_profile') ? 'active' : '' }}"
+                                href="{{ route('show_profile') }}">{{ __('Profile') }}</a>
                             @if (Auth::user()->role->role_desc == 'Admin')
-                                <a class="nav-link"
+                                <a class="nav-link {{ Route::currentRouteNamed('show_account') ? 'active' : '' }}"
                                     href="{{ route('show_account') }}">{{ __('Account Maintenance') }}</a>
                             @endif
                         </div>
