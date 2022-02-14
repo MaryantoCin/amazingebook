@@ -47,7 +47,6 @@ class HomeController extends Controller
     {
         $user = $request->user();
 
-
         $request->validate([
             'first_name' => ['required', 'string', 'alpha_num', 'max:25'],
             'middle_name' => ['nullable', 'string', 'alpha_num', 'max:25'],
@@ -55,7 +54,7 @@ class HomeController extends Controller
             'gender_id' => ['required', 'exists:genders,gender_id'],
             'email' => ['required', 'string', 'email', 'max:50', 'unique:accounts,email,' . $user->account_id . ',account_id'],
             'role_id' => ['required', 'exists:roles,role_id'],
-            'password' => ['required', 'string', 'alpha_num', 'min:8'],
+            'password' => ['required', 'string', 'regex:/[0-9]/', 'min:8'],
             'display_picture' => ['required', 'image'],
         ]);
 
