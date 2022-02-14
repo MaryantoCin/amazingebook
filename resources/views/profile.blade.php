@@ -11,8 +11,8 @@
                             @csrf
                             @method('PATCH')
 
-                            <div class="row mb-3">
-                                <img class="img-fluid" src="{{ asset('storage/' . $user->display_picture_link) }}"
+                            <div class="row mb-3 d-flex justify-content-center">
+                                <img class="w-25" src="{{ asset('storage/' . $user->display_picture_link) }}"
                                     alt="">
                             </div>
 
