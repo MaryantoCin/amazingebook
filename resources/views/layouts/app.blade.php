@@ -28,12 +28,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item d-flex">
-                            <a class="nav-link" href="{{ route('set_locale', 'en') }}">
-                                <img class="country" src="{{ asset('image/us.svg') }}" alt="EN">
-                            </a>
-                            <a class="nav-link" href="{{ route('set_locale', 'id') }}">
-                                <img class="country" src="{{ asset('image/id.svg') }}" alt="ID">
-                            </a>
+                            @if (Session::get('locale', Config::get('app.locale')) == 'id')
+                                <a class="nav-link" href="{{ route('set_locale', 'en') }}">
+                                    <img class="country" src="{{ asset('image/id.svg') }}" alt="ID">
+                                </a>
+                            @else
+                                <a class="nav-link" href="{{ route('set_locale', 'id') }}">
+                                    <img class="country" src="{{ asset('image/us.svg') }}" alt="EN">
+                                </a>
+                            @endif
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
@@ -53,8 +56,9 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
+                                <a class="nav-link" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                                            document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
