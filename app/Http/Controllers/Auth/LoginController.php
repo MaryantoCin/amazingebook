@@ -27,11 +27,13 @@ class LoginController extends Controller
     {
         $this->validateLogin($request);
 
-        $deleted = Account::where('email', $request->email)->first()->delete_flag;
-        if ($deleted) {
-            throw ValidationException::withMessages([
-                $this->username() => ['Account has been deleted.'],
-            ]);
+        $account = Account::where('email', $request->email)->first();
+        if ($account) {
+            if ($account->delete_flag) {
+                throw ValidationException::withMessages([
+                    $this->username() => ['Account has been deleted.'],
+                ]);
+            }
         }
 
         if ($this->attemptLogin($request)) {
